@@ -1,7 +1,7 @@
 # Optimic Protocol
 ## A High-Performance Layer 1 Blockchain for Options and Algorithmic Trading
 
-**Version 1.0 | December 2024**
+**Version 1.0 | October 2025**
 
 ---
 
