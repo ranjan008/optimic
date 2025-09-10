@@ -3,7 +3,7 @@
 
 **Timeline**: Weeks 1-24  
 **Team Size**: 13 people (6 developers, 2 DevOps, 1 product, 2 design, 2 QA)  
-**Objective**: Production-ready blockchain with basic options trading functionality
+**Objective**: Production-ready blockchain with options trading and mandatory collateral system
 
 ---
 
@@ -329,20 +329,20 @@
 - [ ] Real-time P&L calculations
 - [ ] Position aggregation across markets
 
-**Day 4-5: Margin Management (Basic)**
-- [ ] Initial margin requirements
+**Day 4-5: Collateral Management (Basic)**
+- [ ] Initial collateral requirements
   ```rust
-  pub fn calculate_initial_margin(
+  pub fn calculate_initial_collateral(
       position: &Position,
       market: &Market,
       price: Price,
   ) -> Uint128 {
-      // Basic margin calculation
-      // Will be enhanced in Phase 5
+      // Calculate required collateral based on position risk
+      // Applied to both buyers and sellers
   }
   ```
 - [ ] Available balance calculations
-- [ ] Margin call detection (placeholder)
+- [ ] Collateral monitoring and alerts
 
 **Day 6-7: Transaction History**
 - [ ] Trade history storage
@@ -420,7 +420,7 @@
   - [ ] Weekly options (Fridays)
   - [ ] Monthly options (third Friday)
   - [ ] Quarterly options
-- [ ] Market making preparation
+- [ ] Mandatory collateral system preparation
 
 **Day 6-7: Options Pricing Framework**
 - [ ] Black-Scholes implementation (basic)
@@ -463,6 +463,7 @@
       option_id: OptionId,
       quantity: Int128, // Positive for long, negative for short
       average_premium: Price,
+      collateral_posted: Uint128, // Required collateral amount
       unrealized_pnl: Int128,
       delta: f64,
       gamma: f64,
@@ -471,7 +472,7 @@
   }
   ```
 - [ ] Greeks aggregation across positions
-- [ ] Delta hedging preparation (manual)
+- [ ] Mandatory collateral management integration
 
 **Day 6-7: Options Trading Messages**
 - [ ] Buy/Sell options transactions
@@ -482,11 +483,13 @@
       side: OrderSide,
       quantity: u32,
       premium: Option<Price>, // None for market orders
+      collateral: Uint128, // Required collateral for execution guarantee
       order_type: OrderType,
   }
   ```
-- [ ] Options trade settlement
-- [ ] Premium payment handling
+- [ ] Options trade settlement with collateral management
+- [ ] Premium payment handling (100% to platform)
+- [ ] Collateral validation and posting
 
 #### Week 11: Options Exercise & Settlement
 **Assigned to**: Lead Blockchain Developer + QA Engineer #2
@@ -561,25 +564,46 @@
   - [ ] Maximum gamma exposure
   - [ ] Position concentration limits
 
-**Day 4-5: Options Margin (Simplified)**
-- [ ] Long options: Premium paid upfront (no additional margin)
-- [ ] Short options: Basic margin requirements
+**Day 4-5: Mandatory Collateral System**
+- [ ] Buyer collateral requirements
   ```rust
-  pub fn calculate_options_margin(
+  pub fn calculate_buyer_collateral(
       option: &OptionContract,
       position_size: u32,
       underlying_price: Price,
   ) -> Uint128 {
-      // Simplified margin calculation
-      // Will be enhanced with SPAN methodology in Phase 5
+      // Calculate required collateral for option buyers
+      // Ensures ability to pay premium and cover potential losses
+  }
+  ```
+- [ ] Seller collateral requirements
+  ```rust
+  pub fn calculate_seller_collateral(
+      option: &OptionContract,
+      position_size: u32,
+      underlying_price: Price,
+  ) -> Uint128 {
+      // Calculate required collateral for option sellers
+      // Ensures ability to fulfill option obligations and assignments
   }
   ```
 
-**Day 6-7: Risk Monitoring & Alerts**
-- [ ] Real-time risk monitoring
-- [ ] Margin call generation
-- [ ] Risk dashboard preparation (backend data)
-- [ ] Liquidation framework (basic)
+**Day 6-7: Penalty & Fee Distribution System**
+- [ ] Non-execution penalty calculation
+  ```rust
+  pub fn calculate_penalty(
+      collateral: Uint128,
+      penalty_rate: f64, // Configurable percentage
+  ) -> Uint128 {
+      // Calculate penalty from collateral
+  }
+  ```
+- [ ] Fee distribution implementation
+  - [ ] 100% of premiums to platform
+  - [ ] 50% of penalties to platform
+  - [ ] 50% of penalties to counterparty
+- [ ] Penalty enforcement and distribution
+- [ ] Real-time collateral monitoring
 
 ---
 
@@ -1154,11 +1178,12 @@
 - [ ] P&L calculations
 - [ ] Performance metrics
 
-**Day 4-5: Risk Management Service**
+**Day 4-5: Collateral & Fee Management Service**
 - [ ] Position limit monitoring
-- [ ] Margin requirement calculations (basic)
-- [ ] Risk alerts generation
-- [ ] Exposure calculations
+- [ ] Risk-based collateral calculations
+- [ ] Premium fee collection (100% to platform)
+- [ ] Penalty fee distribution (50% platform, 50% counterparty)
+- [ ] Collateral monitoring and alerts
 
 **Day 6-7: Reporting & Analytics**
 - [ ] Trade execution reports
@@ -1358,10 +1383,10 @@
 - [ ] **Quality Risk**: Continuous testing and code review processes
 
 ### Success Metrics
-- [ ] **Week 12**: Core blockchain functionality (99.9% uptime, <100ms transactions)
-- [ ] **Week 16**: Frontend MVP complete (all major user flows working)
-- [ ] **Week 20**: Backend services stable (API response times <200ms)
-- [ ] **Week 24**: Production ready (security audits passed, performance validated)
+- [ ] **Week 12**: Core blockchain with options and mandatory collateral system (99.9% uptime, <100ms transactions)
+- [ ] **Week 16**: Options trading UI complete (all major flows working)
+- [ ] **Week 20**: Collateral and fee distribution systems stable (API response times <200ms)
+- [ ] **Week 24**: Production ready (security audits passed, collateral system validated)
 
 ---
 

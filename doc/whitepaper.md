@@ -1,23 +1,23 @@
 # Optimic Protocol
-## A High-Performance Layer 1 Blockchain for Options and Algorithmic Trading
+## A High-Performance Layer 1 Blockchain for Options Trading
 
-**Version 1.0 | October 2025**
+**Version 1.0 | September 2025**
 
 ---
 
 ## Executive Summary
 
-Optimic is a next-generation Layer 1 blockchain designed specifically for options trading and algorithmic strategies. Building on the proven architecture principles of Hyperliquid, Optimic introduces the world's first fully on-chain options order book with native algorithmic trading infrastructure.
+Optimic is a next-generation Layer 1 blockchain designed specifically for options trading. Optimic introduces the world's first fully on-chain options order book with transparent collateral management and fair fee distribution.
 
-Our protocol eliminates the barriers between traditional derivatives trading and decentralized finance, offering institutional-grade performance with complete transparency and self-custody. Optimic enables 24/7 global access to sophisticated trading strategies previously reserved for institutional players.
+Our protocol eliminates the barriers between traditional derivatives trading and decentralized finance, offering institutional-grade performance with complete transparency and self-custody. Optimic enables 24/7 global access to options trading with a fair and efficient collateral system.
 
 **Key Innovations:**
 - Fully on-chain options order book with sub-second execution
-- Native algorithmic trading engine with smart contract strategies
+- Mandatory collateral system for both buyers and sellers
 - Zero gas fees for trading operations
 - Real-time Greeks calculation and risk management
-- Cross-asset arbitrage opportunities
-- Decentralized market making through liquidity vaults
+- Transparent premium and penalty fee distribution
+- Fair collateral penalty system for non-execution
 
 ---
 
@@ -31,16 +31,15 @@ The global options market exceeds $50 trillion in notional value, yet remains la
 - Expensive fees and margin requirements
 - Lack of transparency in pricing and execution
 - Geographic restrictions and regulatory limitations
-
-Simultaneously, algorithmic trading represents 70%+ of traditional market volume but requires significant infrastructure investment and technical expertise.
+- Unfair collateral and fee structures
 
 ### 1.2 The Optimic Solution
 
-Optimic democratizes access to sophisticated derivatives trading by building a blockchain-native infrastructure that combines:
-- **Options Trading**: Complete options chains with all standard and exotic strategies
-- **Algorithmic Trading**: On-chain strategy execution and backtesting
-- **Market Making**: Decentralized liquidity provision with automated risk management
-- **Cross-Asset Arbitrage**: Native support for multi-asset strategies
+Optimic democratizes access to options trading by building a blockchain-native infrastructure that features:
+- **Options Trading**: Complete options chains with all standard strategies
+- **Fair Collateral System**: Mandatory collateral requirements for both buyers and sellers
+- **Transparent Fee Structure**: Premium fees to platform, penalty fees distributed fairly
+- **Risk Management**: Real-time collateral monitoring and automated liquidation
 
 ---
 
@@ -63,9 +62,9 @@ Order Book Structure:
 ├── Options Chains
 │   ├── Strike Prices (dynamically adjusted)
 │   ├── Expiration Dates (weekly, monthly, quarterly)
-│   └── Option Types (calls, puts, exotics)
-├── Algorithm Registry
-└── Liquidity Pools
+│   └── Option Types (calls, puts)
+├── Collateral Management
+└── Settlement Engine
 ```
 
 ### 2.3 Options Engine
@@ -75,12 +74,12 @@ Order Book Structure:
 **Settlement**: Cash-settled with oracle-based underlying prices
 **Exercise Mechanism**: Automated exercise for ITM options at expiration
 
-### 2.4 Algorithmic Trading Infrastructure
+### 2.4 Collateral & Fee Management
 
-**Strategy Templates**: Pre-built strategies (momentum, mean reversion, arbitrage)
-**Custom Algorithms**: Developers can deploy custom trading logic
-**Backtesting Engine**: Historical simulation with real market data
-**Risk Controls**: Position limits, drawdown protection, correlation monitoring
+**Collateral System**: Mandatory collateral requirements for all participants to ensure trade execution
+**Premium Collection**: All premium fees collected by the platform
+**Penalty Distribution**: Collateral penalties distributed between platform and counterparty
+**Risk Controls**: Position limits, collateral monitoring, automated liquidation
 
 ---
 
@@ -108,20 +107,21 @@ Order Book Structure:
 ### 3.3 Token Utility & Value Accrual
 
 #### 3.3.1 Trading Fees
-- **Fee Structure**: 0.02% maker fee, 0.05% taker fee
-- **Fee Payment**: 50% payable in OMC (25% discount)
+- **Premium Fees**: 100% of option premiums go to platform
+- **Penalty Fees**: Collateral penalties from non-execution distributed:
+  - 50% to platform
+  - 50% to counterparty
 - **Fee Distribution**: 
   - 40% to liquidity providers
   - 30% to OMC stakers
   - 20% burned (deflationary mechanism)
   - 10% to treasury
 
-#### 3.3.2 Staking Rewards
-- **Base APY**: 8-15% depending on staking duration
-- **Bonus Multipliers**:
-  - Active traders: +2% APY
-  - Algorithm developers: +3% APY
-  - Long-term stakers (>1 year): +5% APY
+#### 3.3.2 Collateral Requirements
+- **Buyer Collateral**: Hyperliquid-style collateral required
+- **Seller Collateral**: Hyperliquid-style collateral required
+- **Penalty System**: Percentage of collateral taken if non-execution occurs
+- **Fair Distribution**: Penalties split between platform and affected party
 
 #### 3.3.3 Governance Rights
 - Protocol parameter adjustments
@@ -132,7 +132,7 @@ Order Book Structure:
 
 #### 3.3.4 Liquidity Incentives
 - **LP Rewards**: 25M OMC annually for first 4 years
-- **Algorithm Rewards**: Top-performing algorithms earn OMC bounties
+- **Market Maker Rewards**: Consistent liquidity providers earn OMC bonuses
 - **Volume Incentives**: High-volume traders receive OMC rebates
 
 ### 3.4 Deflationary Mechanisms
@@ -141,8 +141,8 @@ Order Book Structure:
 - 20% of all trading fees burned permanently
 - Projected burn rate: 10-50M OMC annually based on volume
 
-#### 3.4.2 Algorithm Licensing
-- Successful algorithms can be licensed, fees burned
+#### 3.4.2 Trading Volume Burns
+- Higher trading volumes increase fee burns
 - Creates demand for OMC while reducing supply
 
 #### 3.4.3 Buyback Program
@@ -152,18 +152,18 @@ Order Book Structure:
 ### 3.5 Economic Model
 
 #### 3.5.1 Revenue Sources
-1. **Trading Fees**: Primary revenue from options and spot trading
-2. **Algorithm Licensing**: Revenue sharing from successful strategies
-3. **Data Services**: Real-time market data subscriptions
-4. **Cross-Chain Bridge Fees**: Revenue from asset bridging
+1. **Premium Fees**: 100% of option premiums collected by platform
+2. **Penalty Fees**: 50% of collateral penalties from non-execution
+3. **Trading Fees**: Standard trading fees on options transactions
+4. **Data Services**: Real-time market data subscriptions
 
 #### 3.5.2 Value Flow
 ```
-Trading Volume → Fees → OMC Stakers + LP Rewards + Burns → Token Appreciation
+Options Trading → Premium Fees → Platform Revenue
         ↓
-Algorithm Performance → Licensing Revenue → Buybacks → Supply Reduction
+Collateral Penalties → Fair Distribution → Platform + Counterparty
         ↓
-Governance Participation → Protocol Improvements → Increased Adoption
+Fee Revenue → OMC Stakers + LP Rewards + Burns → Token Appreciation
 ```
 
 ---
@@ -176,40 +176,37 @@ Governance Participation → Protocol Improvements → Increased Adoption
 - **Basic**: Long/Short Calls and Puts
 - **Spreads**: Bull/Bear, Butterfly, Condor, Calendar
 - **Complex**: Straddles, Strangles, Ratio spreads
-- **Exotic**: Barrier options, Asian options, Digital options
 
-#### 4.1.2 Risk Management
+#### 4.1.2 Collateral System
+- **Buyer Requirements**: Mandatory collateral to guarantee premium payment and potential exercise
+- **Seller Requirements**: Mandatory collateral to guarantee option fulfillment and potential assignment
+- **Penalty Mechanism**: Percentage of collateral taken for non-execution
+- **Fair Distribution**: Penalties split 50/50 between platform and counterparty
+
+#### 4.1.3 Fee Structure
+- **Premium Fees**: 100% of option premiums collected by platform
+- **Execution Guarantee**: Collateral ensures trade execution or penalty
+- **Transparent Pricing**: All fees clearly displayed before trade
+
+### 4.2 Risk Management
 - Real-time portfolio Greeks monitoring
-- Automated margin calculations
-- Dynamic position limits based on account size
+- Automated collateral calculations based on position risk
+- Dynamic position limits based on available collateral
 - Cross-margin efficiency for related positions
-
-### 4.2 Algorithmic Trading
-
-#### 4.2.1 Strategy Categories
-- **Market Making**: Automated bid-ask spread management
-- **Arbitrage**: Cross-exchange and cross-asset opportunities
-- **Momentum**: Trend-following strategies with risk controls
-- **Mean Reversion**: Counter-trend strategies with statistical models
-- **Volatility**: Trading implied vs realized volatility spreads
-
-#### 4.2.2 Algorithm Marketplace
-- Developers can publish and monetize successful strategies
-- Users can subscribe to proven algorithms
-- Performance tracking and risk metrics transparent
-- Revenue sharing between platform and algorithm creators
+- Automated liquidation when collateral insufficient
 
 ### 4.3 Liquidity Infrastructure
 
-#### 4.3.1 Automated Market Making
-- **OLP Vaults** (Optimic Liquidity Provider): Automated market making for options
-- **Delta-neutral strategies**: Hedged market making with dynamic rebalancing
-- **Volatility provision**: Specialized vaults for volatility trading
+#### 4.3.1 Market Making Incentives
+- Reduced collateral requirements for consistent market makers
+- Fee rebates for high-volume liquidity providers
+- Priority order matching for market makers
 
-#### 4.3.2 Liquidity Incentives
-- Higher rewards for providing liquidity in less liquid strikes
-- Bonus multipliers for maintaining consistent liquidity
-- Volume-based tier system with increasing benefits
+#### 4.3.2 Penalty Distribution
+- **Non-Execution Penalties**: When buyer/seller fails to execute
+- **Platform Share**: 50% of penalty goes to platform treasury
+- **Counterparty Compensation**: 50% of penalty compensates affected party
+- **Incentive Alignment**: Penalties encourage reliable execution
 
 ---
 
@@ -238,14 +235,14 @@ Governance Participation → Protocol Improvements → Increased Adoption
 ### Phase 1: Foundation (Q1-Q2 2025)
 - Mainnet launch with basic options trading
 - Initial asset support (ETH, BTC, SOL)
-- Basic algorithmic trading infrastructure
-- Staking and governance implementation
+- Hyperliquid-style collateral system implementation
+- Premium and penalty fee distribution
 
 ### Phase 2: Expansion (Q3-Q4 2025)
-- Advanced options strategies and exotic options
-- Algorithm marketplace launch
+- Advanced options strategies
 - Mobile app development
 - Additional asset listings (20+ assets)
+- Enhanced risk management tools
 
 ### Phase 3: Ecosystem (Q1-Q2 2026)
 - Cross-chain bridge integration
@@ -254,7 +251,7 @@ Governance Participation → Protocol Improvements → Increased Adoption
 - Third-party integrations
 
 ### Phase 4: Innovation (Q3+ 2026)
-- AI-powered trading assistants
+- Advanced collateral optimization
 - Prediction markets integration
 - Real-world asset options
 - Global expansion and compliance
@@ -295,11 +292,17 @@ Governance Participation → Protocol Improvements → Increased Adoption
 
 ## 9. Conclusion
 
-Optimic represents the next evolution in derivatives trading, combining the sophistication of traditional options markets with the transparency and accessibility of blockchain technology. By building a high-performance Layer 1 blockchain specifically for options and algorithmic trading, we eliminate the barriers that have historically limited access to these powerful financial instruments.
+Optimic represents the next evolution in derivatives trading, combining the sophistication of traditional options markets with the transparency and accessibility of blockchain technology. By building a high-performance Layer 1 blockchain specifically for options trading with a fair collateral system, we eliminate the barriers that have historically limited access to these powerful financial instruments.
 
-Our tokenomics model ensures sustainable growth while providing multiple value accrual mechanisms for OMC token holders. The deflationary design, combined with utility-driven demand, creates a robust economic foundation for long-term protocol success.
+Our tokenomics model ensures sustainable growth while providing multiple value accrual mechanisms for OMC token holders. The transparent fee structure, combined with fair penalty distribution, creates a robust economic foundation that benefits all participants.
 
-The future of derivatives trading is decentralized, transparent, and globally accessible. Optimic is building that future today.
+**Collateral & Fee System Summary:**
+- **Buyers**: Pay premium fee to platform + provide sufficient collateral to guarantee execution
+- **Sellers**: Receive 50% of penalty fees + provide sufficient collateral to guarantee fulfillment  
+- **Platform**: Receives 100% of premiums + 50% of penalty fees
+- **Execution Guarantee**: Collateral ensures trade completion or fair compensation
+
+The future of derivatives trading is decentralized, transparent, and fair to all participants. Optimic is building that future today.
 
 ---
 
@@ -422,21 +425,21 @@ Based on conservative estimates:
 
 #### Competitive Positioning Matrix
 
-| Platform | Decentralization | Performance | Asset Coverage | Algo Trading | Options Depth | Market Share |
-|----------|-----------------|-------------|----------------|--------------|---------------|--------------|
-| **Traditional Brokers** | ❌ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | 🔥🔥🔥🔥🔥 |
-| **Deribit** | ❌ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐⭐⭐ | 🔥🔥🔥🔥 |
+| Platform | Decentralization | Performance | Asset Coverage | Collateral System | Options Depth | Market Share |
+|----------|-----------------|-------------|----------------|-------------------|---------------|--------------|
+| **Traditional Brokers** | ❌ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | 🔥🔥🔥🔥🔥 |
+| **Deribit** | ❌ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | 🔥🔥🔥🔥 |
 | **Lyra** | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐ | 🔥 |
-| **Hyperliquid** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ❌ | 🔥🔥🔥 |
+| **Perpetual DEXs** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ❌ | 🔥🔥🔥 |
 | **Optimic** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | 🆕 |
 
 #### Key Competitive Advantages
 
-1. **Unique Positioning**: Only platform combining high-performance blockchain, full options depth, and native algorithmic trading
+1. **Unique Positioning**: Only platform combining high-performance blockchain, full options depth, and fair collateral system
 2. **Technology Stack**: Purpose-built L1 eliminates gas fees and performance bottlenecks
-3. **Market Gap**: No existing platform effectively serves sophisticated options + algo traders in crypto
-4. **Network Effects**: Algorithm marketplace creates unique moat through community-driven strategies
-5. **Economic Model**: Token incentives align all participants (traders, developers, liquidity providers)
+3. **Market Gap**: No existing platform offers fair collateral and penalty distribution for options
+4. **Network Effects**: Fair fee structure attracts both buyers and sellers
+5. **Economic Model**: Token incentives align all participants (traders, market makers, liquidity providers)
 
 #### Risk Assessment
 
@@ -446,11 +449,10 @@ Based on conservative estimates:
 - Regulatory crackdown on derivatives (low probability)
 
 **Mitigation Strategies**:
-- First-mover advantage in options + algo combination
-- Strong developer ecosystem through superior tools and incentives
+- First-mover advantage in fair options collateral system
+- Strong trader ecosystem through transparent fee structure
 - Regulatory compliance preparation and geographic diversification
 
-*Latest update: December 2024 - Market analysis subject to rapid change in crypto derivatives space*
 
 ---
 
