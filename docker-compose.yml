@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  blockchain:
+    build:
+      context: ./blockchain
+      dockerfile: Dockerfile
+    container_name: optimic-blockchain
+    ports:
+      - "26656:26656"  # P2P port
+      - "26657:26657"  # RPC port
+    volumes:
+      - blockchain_data:/app/data
+      - ./blockchain/config.toml:/app/config.toml:ro
+      - ./blockchain/genesis.json:/app/genesis.json:ro
+    environment:
+      - RUST_LOG=info
+    restart: unless-stopped
+    networks:
+      - optimic-network
+
+  # Future services will be added here:
+  # api:
+  #   build: ./api
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - blockchain
+  #   networks:
+  #     - optimic-network
+
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "3001:3000"
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - optimic-network
+
+volumes:
+  blockchain_data:
+
+networks:
+  optimic-network:
+    driver: bridge
