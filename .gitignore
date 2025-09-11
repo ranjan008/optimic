@@ -1,138 +1,50 @@
-# Optimic Project .gitignore
+# Rust
+target/
+Cargo.lock
+*.pdb
 
-# Operating System Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Desktop.ini
-
-# IDE and Editor Files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
-.vim/
-.netrwhist
 
-# Node.js / NPM
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+
+# Docker
+.dockerignore
+
+# Node.js (for frontend and api)
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .npm
 .yarn-integrity
-.pnp
-.pnp.js
-package-lock.json
-yarn.lock
-
-# Rust
-target/
-Cargo.lock
-*.orig
-.cargo/
-**/*.rs.bk
 
 # Build outputs
-build/
 dist/
-out/
-*.wasm
-*.exe
-*.dll
-*.so
-*.dylib
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Logs
-logs/
-*.log
-log/
-
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-.nyc_output
-
-# Dependency directories for various package managers
-bower_components/
-
-# Docker
-.dockerignore
-docker-compose.override.yml
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Blockchain specific
-.tendermint/
-config/genesis.json
-config/priv_validator_key.json
-config/node_key.json
-data/
-config/addrbook.json
-
-# Keys and secrets
-*.key
-*.pem
-*.p12
-secrets/
-keystore/
-mnemonic*
+build/
 
 # Testing
-test-results/
 coverage/
-.jest/
+.nyc_output/
 
 # Temporary files
 tmp/
 temp/
-*.tmp
-*.temp
-
-# macOS
-.AppleDouble
-.LSOverride
-
-# Windows
-*.stackdump
-[Dd]esktop.ini
-$RECYCLE.BIN/
-
-# Linux
-*~
-
-# Archives
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Application specific
-scripts/local/
-scripts/temp/
-backup/
