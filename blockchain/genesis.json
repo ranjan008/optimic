@@ -1,0 +1,73 @@
+{
+  "chain_id": "optimic-1",
+  "params": {
+    "native_token": "OMC",
+    "block_time": 1,
+    "max_block_size": 1048576,
+    "trading_fees": {
+      "premium_fee_rate": "1.0",
+      "penalty_fee_rate": "0.1",
+      "fee_distribution": {
+        "to_liquidity_providers": "0.4",
+        "to_stakers": "0.3",
+        "to_burn": "0.2",
+        "to_treasury": "0.1"
+      }
+    },
+    "collateral_params": {
+      "buyer_min_collateral_ratio": "1.2",
+      "seller_min_collateral_ratio": "1.5",
+      "liquidation_threshold": "1.1",
+      "penalty_distribution": {
+        "to_platform": "0.5",
+        "to_counterparty": "0.5"
+      }
+    }
+  },
+  "accounts": [
+    {
+      "address": "optimic1genesis",
+      "public_key": null,
+      "account_number": 0,
+      "sequence": 0,
+      "balances": {
+        "OMC": "1000000000000000"
+      }
+    }
+  ],
+  "validators": [
+    {
+      "operator_address": "optimicval1genesis",
+      "consensus_pubkey": "Ed25519_PubKey_placeholder",
+      "jailed": false,
+      "status": "Bonded",
+      "tokens": "100000000",
+      "delegator_shares": "100000000",
+      "commission": {
+        "rate": "0.05",
+        "max_rate": "0.20",
+        "max_change_rate": "0.01"
+      }
+    }
+  ],
+  "markets": [
+    {
+      "id": "ETH-USD",
+      "base_asset": "ETH",
+      "quote_asset": "USD",
+      "min_order_size": "1000000",
+      "tick_size": "0.01",
+      "market_type": "Spot",
+      "status": "Active"
+    },
+    {
+      "id": "BTC-USD",
+      "base_asset": "BTC",
+      "quote_asset": "USD",
+      "min_order_size": "1000",
+      "tick_size": "1.0",
+      "market_type": "Spot",
+      "status": "Active"
+    }
+  ]
+}
