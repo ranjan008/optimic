@@ -1,0 +1,37 @@
+# Optimic Node Configuration
+
+[node]
+chain_id = "optimic-1"
+data_dir = "./data"
+genesis_path = "./genesis.json"
+
+[consensus]
+block_time = 1  # 1 second blocks
+max_block_size = 1048576  # 1MB
+
+[network]
+listen_addr = "0.0.0.0:26656"
+rpc_listen_addr = "0.0.0.0:26657"
+max_peers = 50
+
+[storage]
+backend = "memory"  # memory, rocksdb
+cache_size = 1024  # MB
+
+[trading]
+enable_options = true
+enable_spot = true
+max_orders_per_user = 1000
+
+[collateral]
+buyer_min_ratio = "1.2"   # 120%
+seller_min_ratio = "1.5"  # 150%
+liquidation_threshold = "1.1"  # 110%
+
+[fees]
+premium_fee_rate = "1.0"     # 100% to platform
+penalty_fee_rate = "0.1"    # 10% penalty rate
+
+[logging]
+level = "info"
+format = "json"
